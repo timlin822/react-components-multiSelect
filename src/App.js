@@ -1,24 +1,40 @@
-import logo from './logo.svg';
+import {useState,useEffect} from 'react';
+
+import MultiSelect from 'components/select/MultiSelect';
+
+import PROGRAMS_DATA from 'data/ProgramsData';
+
 import './App.css';
 
 function App() {
+  const [programs,setPrograms]=useState(PROGRAMS_DATA);
+  const [selectPrograms,setSelectPrograms]=useState([]);
+  const [selectIsOpen,setSelectIsOpen]=useState(false);
+
+  const selectToggleHandler=()=>{
+    setSelectIsOpen(!selectIsOpen);
+  };
+
+  const clickHandler=(program)=>{
+    setSelectIsOpen(false);
+    setSelectPrograms([...selectPrograms,program.programName]);
+  };
+
+  const removeHandler=(i)=>{
+    setSelectIsOpen(false);
+    setSelectPrograms(selectPrograms.filter((_,index)=>index!==i));
+  };
+
+  useEffect(()=>{
+    setPrograms(PROGRAMS_DATA.filter(program=>selectPrograms.indexOf(program.programName)===-1)); //找出兩個array不同的值
+  },[selectPrograms]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="section-padding bg-height">
+      <div className="container container-padding">
+        <MultiSelect selectIsOpen={selectIsOpen} selectPrograms={selectPrograms} programs={programs} selectToggleHandler={selectToggleHandler} clickHandler={clickHandler} removeHandler={removeHandler} />
+      </div>
+    </section>
   );
 }
 

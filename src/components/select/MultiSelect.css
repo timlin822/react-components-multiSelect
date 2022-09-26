@@ -1,0 +1,76 @@
+.select-input{
+    cursor: pointer;
+    width: 40%;
+    min-height: 60px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #151515;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    padding: 3px 10px 3px 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.select-group{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.select-group .select{
+    cursor: default;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    background-color: #003366;
+    border-radius: 5px;
+    padding: 8px 5px 8px 8px;
+    margin: 3px;
+}
+.select-group .select-title{
+    margin-right: 5px;
+}
+.select-group .select-close{
+    cursor: pointer;
+    font-size: 14px;
+}
+.text{
+    padding-left: 7px;
+}
+.arrow-icon{
+    font-size: 30px;
+    transition: transform 0.5s ease;
+}
+.arrow-icon-rotate{
+    transform: rotate(-180deg);
+}
+.select-input .select-list{
+    width: 100%;
+    border-radius: 5px;
+    position: absolute;
+    top: 120%;
+    left: 0px;
+    overflow: hidden;
+}
+.select-input .select-list-close{
+    border: 0px solid #aaa;
+    max-height: 0px;
+    transition: border 0.2s linear,max-height 0.2s linear;
+}
+.select-input .select-list-open{
+    border: 1px solid #aaa;
+    max-height: 360px;
+    transition: border 0.2s linear,max-height 0.2s linear;
+}
+.select-list .option{
+    cursor: pointer;
+    line-height: 60px;
+    font-size: 22px;
+    font-weight: 500;
+    padding: 0px 10px;
+    transition: background-color 0.5s ease;
+}
+.select-list .option:hover{
+    background-color: #eee;
+}
